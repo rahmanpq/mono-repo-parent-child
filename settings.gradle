@@ -1,0 +1,6 @@
+include 'projectA', 'projectB'
+
+rootProject.name = 'Mono-Repo-Parent'
+
+
+
