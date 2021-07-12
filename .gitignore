@@ -28,10 +28,14 @@ hs_err_pid*
 !/gradle/wrapper/gradle-wrapper.jar
 
 .idea
+.idea/
+**/.idea/
 *.iml
 build
 out
 .gradle
+.gradle/
+**/.gradle/
 *.ipr
 *.iws
 
