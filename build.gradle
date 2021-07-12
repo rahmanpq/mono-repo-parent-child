@@ -1,17 +1,16 @@
 plugins{
-    id 'org.springframework.boot' version '2.5.2'
-    id 'io.spring.dependency-management'  version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management'  version "${springDependencyManagementVersion}"
 }
 
 subprojects {
     apply plugin: 'java'
 
-   
-    group = 'com.deno.monorepo'
-    version = '0.0.1-SNAPSHOT'
+    group = groupName
+    version = parentVersion
     
-    sourceCompatibility = 16
-    targetCompatibility = 16
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
     
     repositories {
         mavenCentral()
@@ -19,7 +18,8 @@ subprojects {
 
     dependencies {
         // intentional empty will be setting common dependencies for all repos
-        compileOnly 'org.projectlombok:lombok:1.18.20'
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     }
 
     test {
@@ -34,13 +34,13 @@ project(':projectA') {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    version = '0.0.1-SNAPSHOT'
+    version = projectAVersion
    
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter:2.5.2'
-        implementation 'org.springframework.kafka:spring-kafka'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        testImplementation 'org.springframework.kafka:spring-kafka-test'
+        implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+        implementation "org.springframework.kafka:spring-kafka:${springKafkaVersion}"
+        testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+        testImplementation "org.springframework.kafka:spring-kafka-test:${springKafkaVersion}"
     }
 }
 
@@ -48,13 +48,13 @@ project(':projectB') {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    version = '0.0.2-SNAPSHOT'
-	
+    version = projectBVersion
+
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter:2.5.1'
-        implementation 'org.springframework.kafka:spring-kafka'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        testImplementation 'org.springframework.kafka:spring-kafka-test'
+        implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+        implementation "org.springframework.kafka:spring-kafka:${springKafkaVersion}"
+        testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+        testImplementation "org.springframework.kafka:spring-kafka-test:${springKafkaVersion}"
     }
 }
 
