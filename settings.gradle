@@ -1,5 +1,4 @@
 include 'projectA', 'projectB'
 
 rootProject.name = 'Mono-Repo-Parent'
-include 'projectA.integration'
 
