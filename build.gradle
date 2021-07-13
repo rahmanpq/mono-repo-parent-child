@@ -7,7 +7,6 @@ subprojects {
     apply plugin: 'java'
 
     group = groupName
-    version = parentVersion
     
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
@@ -28,13 +27,9 @@ subprojects {
 
 }
 
-
 project(':projectA') {
-
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-
-    version = projectAVersion
    
     dependencies {
         implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
@@ -50,8 +45,6 @@ project(':projectA') {
 project(':projectB') {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-
-    version = projectBVersion
 
     dependencies {
         implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
