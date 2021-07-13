@@ -39,8 +39,11 @@ project(':projectA') {
     dependencies {
         implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
         implementation "org.springframework.kafka:spring-kafka:${springKafkaVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}"
+
         testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
         testImplementation "org.springframework.kafka:spring-kafka-test:${springKafkaVersion}"
+        testImplementation 'io.projectreactor:reactor-test'
     }
 }
 
@@ -53,8 +56,11 @@ project(':projectB') {
     dependencies {
         implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
         implementation "org.springframework.kafka:spring-kafka:${springKafkaVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}"
+
         testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
         testImplementation "org.springframework.kafka:spring-kafka-test:${springKafkaVersion}"
+        testImplementation 'io.projectreactor:reactor-test'
     }
 }
 
