@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    stream:
+      function:
+        definition: userProcessor
+      bindings:
+        userProcessor-in-0:
+          destination: userMessage
+        userProcessor-out-0:
+          destination: user
+  kafka:
+    bindings:
+      userProcessor-in-0:
+        consumer:
+          configuration:
+            key:
+              deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value:
+              deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      userProcessor-out-0:
+        producer:
+          configuration:
+            key:
+              serializer: org.apache.kafka.common.serialization.StringDeserializer
+            value:
+              serializer: org.apache.kafka.common.serialization.StringDeserializer
+    binders:
+      brokers:
+        - localhost:9091
+        - localhost:9092
