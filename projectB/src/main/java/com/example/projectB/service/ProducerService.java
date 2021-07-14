@@ -22,9 +22,7 @@ public class ProducerService {
 
     public void sendMessage(String message) {
         LOGGER.info(format("***************** Produce Message -> %s", message));
-        kafkaTemplate.send(TOPIC, message.getBytes(StandardCharsets.UTF_8));
-        /*var record = new ProducerRecord<>(TOPIC, null, UUID.randomUUID().toString(), message);
-        kafkaTemplate.send(record);*/
+        kafkaTemplate.send(TOPIC, message);
     }
 
 }
