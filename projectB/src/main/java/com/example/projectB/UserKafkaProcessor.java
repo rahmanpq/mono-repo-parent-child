@@ -8,12 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.function.Function;
 
 import static java.lang.String.format;
 
-@Configurable
+@Configuration("UserKafkaProcessor")
 public class UserKafkaProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserKafkaProcessor.class);
 
