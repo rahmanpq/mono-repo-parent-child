@@ -1,7 +1,7 @@
 server:
   port: 8080
 spring.cloud.stream:
-Add  function.definition: userProcessor;userService
+  function.definition: userProcessor;userService
   bindings:
     userProcessor-in-0:
       destination: userMessage
