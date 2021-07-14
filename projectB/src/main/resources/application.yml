@@ -1,23 +1,30 @@
 server:
   port: 8080
 spring.cloud.stream:
-  function.definition: userProcessor
+Add  function.definition: userProcessor;userService
   bindings:
     userProcessor-in-0:
       destination: userMessage
     userProcessor-out-0:
       destination: user
+    userService-in-0:
+      destination: user
   kafka.streams:
     binder.functions:
+      userService:
+        applicationId: group-id
       userProcessor:
         applicationId: userprocessor-consumer-group-id
       bindings:
         userProcessor-in-0.consumer:
             keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
             valueSerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+
         userProcessor-out-0.producer:
             keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
             valueSerde: org.apache.kafka.common.serialization.Serdes$StringSerde
-
+        userService-in-0.consumer:
+          keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+          valueSerde: org.apache.kafka.common.serialization.Serdes$StringSerde
 spring.kafka:
   bootstrap-servers: localhost:9092

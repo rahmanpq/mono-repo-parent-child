@@ -11,6 +11,7 @@ import static java.lang.String.format;
 public class ConsumerService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerService.class);
 
+
     public void consumeMessage(String message) {
         LOGGER.info(format("*****-> Consume Message ----> %s", message));
     }
