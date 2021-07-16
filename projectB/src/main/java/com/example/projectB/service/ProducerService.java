@@ -1,6 +1,6 @@
 package com.example.projectB.service;
 
-import org.apache.kafka.clients.producer.ProducerRecord;
+import com.example.projectB.models.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,7 @@ public class ProducerService {
     private KafkaTemplate kafkaTemplate;
 
     public void sendMessage(String message) {
+        var customer = Customer.newBuilder().setMessage("message 1").build();
         LOGGER.info(format("***************** Produce Message -> %s", message));
         kafkaTemplate.send(TOPIC, message);
     }

@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "Customer",
+  "namespace": "com.example.projectB.models",
+  "doc": "Generic Customer address details.",
+  "fields": [
+    {
+      "name": "name",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null,
+      "doc": "Name of person or organization."
+    },
+    {
+      "name": "message",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null,
+      "doc": "Message from help."
+    }
+  ]
+}
