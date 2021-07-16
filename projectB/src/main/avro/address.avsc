@@ -1,0 +1,43 @@
+{
+  "type": "record",
+  "name": "Address",
+  "namespace": "com.example.registry.addresses.models",
+  "doc": "Generic address object containing all information about a physical or mailing address.",
+  "fields": [
+    {
+      "name": "name",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null,
+      "doc": "Name of person or organization."
+    },
+    {
+      "name": "street",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null,
+      "doc": "Street of the physical location."
+    },
+    {
+      "name": "city",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "postalCode",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null,
+      "doc": "Postal code/ZIP code."
+    }
+  ]
+}
