@@ -17,6 +17,7 @@ subprojects {
     repositories {
         mavenCentral()
         gradlePluginPortal()
+        maven { url = 'https://packages.confluent.io/maven/' }
     }
 
     dependencies {
@@ -59,6 +60,8 @@ project(':projectB') {
         implementation "org.springframework.cloud:spring-cloud-stream-binder-kafka"
         implementation "org.springframework.cloud:spring-cloud-stream-binder-kafka-streams"
         implementation group: 'org.apache.kafka', name: 'kafka-streams'
+        implementation 'io.confluent:kafka-avro-serializer:' + "${confluentVersion}"
+        implementation 'io.confluent:kafka-schema-registry-client:' + "${confluentVersion}"
 
         implementation "org.apache.avro:avro:1.10.1"
 
@@ -68,15 +71,10 @@ project(':projectB') {
         testImplementation 'io.projectreactor:reactor-test'
     }
 
-    //gradle-avro-plugin setting
-    avro {
-        //convert all string type to "java.lang.CharSequence"
-        stringType = "CharSequence"
-    }
-
     def generateAvro = tasks.register("generateAvro", GenerateAvroJavaTask) {
-        source("src/avro")
-        outputDir = file("dest/avro")
+        source("src/main/resources/avro")
+        outputDir =  file("$buildDir/generated/sources/avro/java/main")
+        sourceSets.main.java.srcDirs += ["$buildDir/generated/sources/avro/java/main"]
     }
 
     tasks.named("compileJava").configure {
