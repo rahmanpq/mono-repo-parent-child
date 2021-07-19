@@ -5,9 +5,9 @@ spring:
   function.definition: userProcessor;userService
   bindings:
     userProcessor-in-0:
-      destination: userMessage
+      destination: userMessage4
     userProcessor-out-0:
-      destination: user
+      destination: user4
     userService-in-0:
       destination: user4
   kafka:
