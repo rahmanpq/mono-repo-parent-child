@@ -17,7 +17,7 @@ public class UserKafkaConsumerProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserKafkaConsumerProcessor.class);
 
     @Bean
-    public Consumer<KStream<String, String>> userService() {
+    public Consumer<KStream<String, com.example.projectB.models.Customer>> userService() {
         LOGGER.info(format("*****-> Consume Stream Message ---->"));
 
         return kstream -> kstream.foreach(

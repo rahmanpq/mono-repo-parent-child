@@ -18,12 +18,22 @@ public class ProducerService {
     private static final String TOPIC = "userMessage";
 
     @Autowired
-    private KafkaTemplate kafkaTemplate;
+    private KafkaTemplate<String, Customer> kafkaTemplate;
 
     public void sendMessage(String message) {
-        var customer = Customer.newBuilder().setMessage("message 1").build();
         LOGGER.info(format("***************** Produce Message -> %s", message));
-        kafkaTemplate.send(TOPIC, message);
+        Customer customer = Customer.newBuilder()
+                .setName("Wikered")
+                .setMessage(message)
+                .build();
+
+        Customer customer2 = Customer.newBuilder()
+                .setName("Customer2")
+                .setMessage(message)
+                .build();
+        //ProducerRecord record = new ProducerRecord(TOPIC, null, customer);
+        kafkaTemplate.send(TOPIC, UUID.randomUUID().toString(), customer);
+        kafkaTemplate.send(TOPIC, null, customer2);
     }
 
 }

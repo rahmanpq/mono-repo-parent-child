@@ -19,11 +19,11 @@ public class UserKafkaProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserKafkaProcessor.class);
 
     @Bean
-    public Function<KStream<String, String>, KStream<String, String>> userProcessor() {
+    public Function<KStream<String, com.example.projectB.models.Customer>, KStream<String, com.example.projectB.models.Customer>> userProcessor() {
         LOGGER.info(format("*****-> Consume Stream Message ---->"));
 
         return kstream -> kstream.map(
-                (key, value) -> KeyValue.pair(value.toLowerCase(), value + "Hurray"));
+                (key, value) -> KeyValue.pair(key, value));
 
     }
 }
